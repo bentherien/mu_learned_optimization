@@ -1,5 +1,8 @@
 # Welcome to $\mu$ Learned Optimization!
 
+This repository contains the research code for [µLO: COMPUTE-EFFICIENT META-GENERALIZATION
+OF LEARNED OPTIMIZERS](https://arxiv.org/pdf/2406.00153).
+
 # Installation
 
 Run the following code:
