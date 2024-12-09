@@ -6,12 +6,41 @@ This repository contains the research code for [μLO: Compute-Efficient Meta-Gen
 
 Run the following code:
 ```
-python -m venv venv
-source venv/bin/activate
+mkdir l2o_install
+cd l2o_install
 
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install nvidia-pyindex
-python -m pip install -r requirements.txt
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_24.5.0-0-Linux-x86_64.sh
+bash Miniconda3-py39_24.5.0-0-Linux-x86_64.sh -b -p $PWD/miniconda3
+source $PWD/miniconda3/bin/activate
+
+git clone https://github.com/bentherien/mu_learned_optimization
+cd mu_learned_optimization
+pip install -r requirements.txt
+
+
+cd ..
+git clone https://github.com/lefameuxbeding/learned_optimization
+cd learned_optimization
+git checkout mup_compatible
+pip install -e .
+
+cd ..
+git clone https://github.com/google-research/vision_transformer
+cd vision_transformer
+git checkout ac6e056
+pip install -e .
+
+
+cd ../mu_learned_optimization
+pip install mmengine seqio wandb
+pip install -U dm-haiku chex flax
+pip install optax==0.1.7
+pip install "jax[cuda12]==0.4.26"
+conda install -c conda-forge openmpi=4.1.2
+
+# change the following as is appropriate for your environment
+export TFDS_DATA_DIR=/scr/data/tensorflow_datasets
+export WANDB_DIR=$PWD/wandb
 ```
 
 # Quickstart
@@ -109,7 +138,19 @@ CUDA_VISIBLE_DEVICES=0 python src/main.py \
     --test_interval 50 \
 ```
 
-```
+
+
+# Optimizing Meta-Training Programs
+Tweaking the hyperparameters of a meta-training program can have a significant impact on the iteration speed and memory consumption of meta-training. Here are some tips for optimizing meta-training programs:
+
+## Optimizing meta-training memory usage when using `custom_preload_tfds_image_classification_datasets`
+- `prefetch_batches`: when using this preloading function, each task keeps a buffer of samples on the GPU to avoid waiting for CPU-GPU transfers during meta-training. The prefect_batches variable therefore controls how much GPU memory will be used by the buffer.
+
+
+## Opitmizing meta-training efficiency and memory usage
+- `num_tasks`: this variable controls the number of perturbations to the learned optimizer's weights sampled in the gradient estimator. During meta-training, 1 unroll is performed for each perturbation (2 if antethetic sampling is used). 1 Batch of data is required per optimization step per task.
+- `steps_per_jit`: This variable controls the number of unrolling steps performed within the jitted unroll_step function. Since data cannot be sampled within jitted functions, this has the effect of also specifying the amount of data we are required to load before each call to `unroll_step`. The total amount of data is `steps_per_jit * num_tasks * batch_size`. If antithetic sampling is used (as is the case for PES), this quantity should be multiplied by 2. 
+
 
 # Config file structure
 
