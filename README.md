@@ -4,7 +4,7 @@ This repository contains the research code for [μLO: Compute-Efficient Meta-Gen
 
 # Citation
 If you found this code useful in your research, please consider citing our work:
-```
+```bibtex
 @misc{therien2024mulo,
   title = {$\mu$LO: Compute-Efficient Meta-Generalization of Learned Optimizers},
   author = {Benjamin Thérien and Charles-Étienne Joseph and Boris Knyazev and Edouard Oyallon and Irina Rish and Eugene Belilovsky},
@@ -186,7 +186,7 @@ When a checkpoint is logged, it is saved under ```checkpoints/<meta-train-dir>``
 
 # Citation
 If you found this code useful in your research, please consider citing our work:
-```
+```bibtex
 @misc{therien2024mulo,
   title = {$\mu$LO: Compute-Efficient Meta-Generalization of Learned Optimizers},
   author = {Benjamin Thérien and Charles-Étienne Joseph and Boris Knyazev and Edouard Oyallon and Irina Rish and Eugene Belilovsky},
