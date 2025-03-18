@@ -2,6 +2,20 @@
 
 This repository contains the research code for [μLO: Compute-Efficient Meta-Generalization of Learned Optimizers](https://arxiv.org/abs/2406.00153).
 
+# Citation
+If you found this code useful in your research, please consider citing our work:
+```
+@misc{therien2024mulo,
+  title = {$\mu$LO: Compute-Efficient Meta-Generalization of Learned Optimizers},
+  author = {Benjamin Thérien and Charles-Étienne Joseph and Boris Knyazev and Edouard Oyallon and Irina Rish and Eugene Belilovsky},
+  year = {2024},
+  eprint = {2406.00153},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2406.00153}
+}
+```
+
 # Installation
 
 Run the following code:
@@ -169,3 +183,17 @@ The ```checkpoints_to_keep``` and ```save_iter``` config variables control the n
 
 # Loading from a checkpoint during meta training
 When a checkpoint is logged, it is saved under ```checkpoints/<meta-train-dir>``` where ```<meta-train-dir>``` is the dynamically assigned meta-train-name. Whenever a new checkpoint is logged, a file called ```latest``` is updated with the name of the most recent checkpoint. When resuming from a checkpoint the user simply has to set the ```--from_checkpoint``` flag and meta training will automatically resume to the checkpoint specified in the ```latest``` file.
+
+# Citation
+If you found this code useful in your research, please consider citing our work:
+```
+@misc{therien2024mulo,
+  title = {$\mu$LO: Compute-Efficient Meta-Generalization of Learned Optimizers},
+  author = {Benjamin Thérien and Charles-Étienne Joseph and Boris Knyazev and Edouard Oyallon and Irina Rish and Eugene Belilovsky},
+  year = {2024},
+  eprint = {2406.00153},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2406.00153}
+}
+```
