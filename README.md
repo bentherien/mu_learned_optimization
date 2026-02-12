@@ -184,6 +184,8 @@ The ```checkpoints_to_keep``` and ```save_iter``` config variables control the n
 # Loading from a checkpoint during meta training
 When a checkpoint is logged, it is saved under ```checkpoints/<meta-train-dir>``` where ```<meta-train-dir>``` is the dynamically assigned meta-train-name. Whenever a new checkpoint is logged, a file called ```latest``` is updated with the name of the most recent checkpoint. When resuming from a checkpoint the user simply has to set the ```--from_checkpoint``` flag and meta training will automatically resume to the checkpoint specified in the ```latest``` file.
 
+Eugene's Zoom: https://concordia-ca.zoom.us/j/7910151742?pwd=QpzQFwd2kuOkkHSHbGHzzQzE0JQLBq.1
+
 # Citation
 If you found this code useful in your research, please consider citing our work:
 ```bibtex
